@@ -7,8 +7,9 @@ public:
 	Renderable();
 	~Renderable();
 
+	virtual void render() = 0;
 private:
-	
+
 };
 
 #endif

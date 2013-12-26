@@ -3,6 +3,10 @@
 
 #include <vector>
 
+#include "renderable.hpp"
+#include "collidable.hpp"
+#include "entity.hpp"
+
 using std::vector;
 
 typedef vector<Renderable*> RenderableList;
@@ -15,11 +19,17 @@ public:
 	Engine();
 	~Engine();
 
-	void update();
-	void render();
-	void processCollisions();
-private:
+	void addEntity(Entity *entity);
+	void addRenderable(Renderable *renderable);
+	void addCollidable(Collidable *collidable);
 
+	void update(); // Entities
+	void render(); // Renderables
+	void processCollisions(); // Collidables
+private:
+	EntityList entities;
+	RenderableList renderables;
+	CollidableList collidables;
 };
 
 #endif

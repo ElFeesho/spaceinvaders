@@ -7,6 +7,8 @@ public:
 	Collidable();
 	~Collidable();
 
+	virtual void checkCollision(Collidable *collidable);
+	virtual void hasCollided(Collidable *with) = 0; 
 private:
 };
 
