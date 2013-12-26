@@ -1,4 +1,4 @@
-OBJS=main.o engine.o entity.o
+OBJS=main.o engine.o entity.o collidable.o ship.o renderable.o
 LIBS=`pkg-config --libs sdl SDL_gfx`
 CFLAGS=`pkg-config --cflags sdl SDL_gfx`
 PROG=spaceinvaders

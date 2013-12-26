@@ -2,7 +2,7 @@
 
 Entity::Entity()
 {
-
+	
 }
 
 Entity::~Entity()

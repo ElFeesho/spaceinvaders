@@ -12,17 +12,17 @@ Engine::~Engine()
 
 void Engine::addEntity(Entity *entity)
 {
-
+	entities.push_back(entity);
 }
 
 void Engine::addRenderable(Renderable *renderable)
 {
-
+	renderables.push_back(renderable);
 }
 
 void Engine::addCollidable(Collidable *collidable)
 {
-
+	collidables.push_back(collidable);
 }
 
 void Engine::update()

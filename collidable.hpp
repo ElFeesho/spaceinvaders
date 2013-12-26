@@ -9,6 +9,10 @@ public:
 
 	virtual void checkCollision(Collidable *collidable);
 	virtual void hasCollided(Collidable *with) = 0; 
+
+	virtual double getRadius() = 0;
+	virtual double getX() = 0;
+	virtual double getY() = 0;
 private:
 };
 
