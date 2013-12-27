@@ -19,6 +19,8 @@ public:
 	double getY();
 
 	void hasCollided(Collidable *victim);
+
+	int getId();
 };
 
 #endif

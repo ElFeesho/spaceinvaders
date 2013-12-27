@@ -63,3 +63,14 @@ void Engine::processCollisions()
 		}		
 	}
 }
+
+Engine *Engine::getInstance()
+{
+	if(!Engine::instance)
+	{
+		Engine::instance = new Engine();
+	}
+	return Engine::instance;
+}
+
+Engine *Engine::instance = 0;

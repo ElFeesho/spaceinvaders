@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	long start = 0;
 	double angle = 0;
 
-	Engine *engine = new Engine();
+	Engine *engine = Engine::getInstance();
 
 	Ship *ship = new Ship();
 
@@ -38,8 +38,6 @@ int main(int argc, char **argv)
 		}
 
 		SDL_FillRect(screen, NULL, 0x00000000);
-		angle += 0.01;
-		aalineColor(screen, 320, 160, 320 + cos(angle)*320, 160 + sin(angle)*160, 0xff0088ff);
 
 		engine->update();
 		engine->processCollisions();

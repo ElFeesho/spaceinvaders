@@ -16,9 +16,7 @@ typedef vector<Entity*> EntityList;
 class Engine
 {
 public:
-	Engine();
-	~Engine();
-
+	static Engine *getInstance();
 	void addEntity(Entity *entity);
 	void addRenderable(Renderable *renderable);
 	void addCollidable(Collidable *collidable);
@@ -27,6 +25,11 @@ public:
 	void render(); // Renderables
 	void processCollisions(); // Collidables
 private:
+	Engine();
+	~Engine();
+
+	static Engine *instance;
+
 	EntityList entities;
 	RenderableList renderables;
 	CollidableList collidables;

@@ -13,6 +13,7 @@ public:
 	virtual double getRadius() = 0;
 	virtual double getX() = 0;
 	virtual double getY() = 0;
+	virtual int getId() = 0;
 private:
 };
 

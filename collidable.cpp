@@ -12,6 +12,11 @@ Collidable::~Collidable()
 
 void Collidable::checkCollision(Collidable *target)
 {
+	if (!target)
+	{
+		return;
+	}
+	
 	double xdiff = target->getX() - getX();
 	double ydiff = target->getY() - getY();
 	xdiff *= xdiff;
@@ -22,5 +27,4 @@ void Collidable::checkCollision(Collidable *target)
 	{
 		this->hasCollided(target);
 	}
-
 }
