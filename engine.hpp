@@ -21,24 +21,17 @@ public:
 
 	void addEntity(Entity *entity);
 	void addRenderable(Renderable *renderable);
-	void addCollidable(Collidable *collidable);
 
 	void update(); // Entities
 	void render(); // Renderables
-	void processCollisions(); // Collidables
 private:
 	Engine();
 	~Engine();
 
 	static Engine *instance;
 
-	EntityList pendingEntities;
-	RenderableList pendingRenderables;
-	CollidableList pendingCollidables;
-
 	EntityList entities;
 	RenderableList renderables;
-	CollidableList collidables;
 };
 
 #endif

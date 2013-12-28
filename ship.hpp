@@ -5,22 +5,21 @@
 #include "collidable.hpp"
 #include "renderable.hpp"
 
-class Ship : public Renderable, public Collidable, public Entity
+class Ship : public Renderable, public Entity
 {
 public:
 	Ship();
 	~Ship();
 
 	bool update();
-	void render();
-
-	double getRadius();
-	double getX();
-	double getY();
+	bool render();
 
 	void hasCollided(Collidable *victim);
 
 	int getId();
+
+private:
+	long lastShot;
 };
 
 #endif

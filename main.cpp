@@ -5,6 +5,7 @@
 
 #include "engine.hpp"
 #include "ship.hpp"
+#include "badguy.hpp"
 
 int main(int argc, char **argv)
 {
@@ -21,10 +22,15 @@ int main(int argc, char **argv)
 	Engine *engine = Engine::getInstance();
 
 	Ship *ship = new Ship();
+	BadGuy *baddie = new BadGuy();
+	baddie->X(160);
+	baddie->Y(100);
 
 	engine->addEntity(ship);
 	engine->addRenderable(ship);
-	engine->addCollidable(ship);
+
+	engine->addEntity(baddie);
+	engine->addRenderable(baddie);
 
 	while (!done)
 	{
@@ -40,7 +46,6 @@ int main(int argc, char **argv)
 		SDL_FillRect(screen, NULL, 0x00000000);
 
 		engine->update();
-		engine->processCollisions();
 		engine->render();
 
 		SDL_Flip(screen);

@@ -1,7 +1,9 @@
 #ifndef __ENTITY_HPP__
 #define __ENTITY_HPP__
 
-class Entity
+#include "collidable.hpp"
+
+class Entity : public Collidable
 {
 public:
 	Entity();
@@ -14,9 +16,21 @@ public:
 	
 	void Y(double y);
 	double Y();
+
+	double getX();
+	double getY();
+	double getRadius();
+
+	bool isAlive();
+	void kill();
+
+protected:
+	void setRadius(double r);
 private:
 	double x;
-	double y;	
+	double y;
+	double radius;	
+	bool alive;
 };
 
 #endif

@@ -1,15 +1,14 @@
-#ifndef __BULLET_HPP__
-#define __BULLET_HPP__
+#ifndef __BADGUY_HPP__
+#define __BADGUY_HPP__
 
-#include "collidable.hpp"
 #include "entity.hpp"
 #include "renderable.hpp"
 
-class Bullet : public Renderable, public Entity
+class BadGuy : public Entity, public Renderable
 {
 public:
-	Bullet();
-	~Bullet();
+	BadGuy();
+	virtual ~BadGuy();
 
 	int getId();
 
@@ -17,6 +16,8 @@ public:
 	bool update();
 
 	void hasCollided(Collidable *collidable);
+private:
+	bool isAlive;
 };
 
 #endif

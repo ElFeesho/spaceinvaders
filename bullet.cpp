@@ -4,7 +4,7 @@
 
 Bullet::Bullet()
 {
-
+	setRadius(4);
 }
 
 Bullet::~Bullet()
@@ -15,29 +15,20 @@ Bullet::~Bullet()
 bool Bullet::update()
 {
 	Y(Y()-3);
+	
+	if((Y()+getRadius()<0))
+	{
+		kill();
+	}
 
-	return (Y()+getRadius()>0);
+	return isAlive();
 }
 
-void Bullet::render()
+bool Bullet::render()
 {
-	SDL_Rect rect = { X(), Y(), getRadius()*2, getRadius()*2 };
+	SDL_Rect rect = { X()-2, Y(), 4, getRadius()*2 };
 	SDL_FillRect(SDL_GetVideoSurface(), &rect, 0xffffffff);
-}
-
-double Bullet::getRadius()
-{
-	return 4;
-}
-
-double Bullet::getX()
-{
-	return X();
-}
-
-double Bullet::getY()
-{
-	return Y();
+	return isAlive();
 }
 
 int Bullet::getId()
@@ -47,5 +38,8 @@ int Bullet::getId()
 
 void Bullet::hasCollided(Collidable *collidable)
 {
-
+	if(collidable->getId() == 2)
+	{
+		kill();
+	}
 }

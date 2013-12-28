@@ -7,7 +7,7 @@ public:
 	Renderable();
 	virtual ~Renderable() = 0;
 
-	virtual void render() = 0;
+	virtual bool render() = 0;
 private:
 
 };
