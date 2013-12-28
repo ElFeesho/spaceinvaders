@@ -16,8 +16,7 @@ bool Bullet::update()
 {
 	Y(Y()-3);
 
-	return (Y()+getRadius()>0);
-
+	return (Y()+getRadius()<0);
 }
 
 void Bullet::render()

@@ -1,13 +1,8 @@
 #include "collidable.hpp"
 
-Collidable::Collidable()
-{
-
-}
-
 Collidable::~Collidable()
 {
-
+	
 }
 
 void Collidable::checkCollision(Collidable *target)

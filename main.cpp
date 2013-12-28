@@ -52,6 +52,10 @@ int main(int argc, char **argv)
 		}
 	}
 
+	Engine::shutdown();
+
+	SDL_FreeSurface(screen);
+
 	SDL_Quit();
 	return 0;
 }

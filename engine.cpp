@@ -27,15 +27,15 @@ void Engine::addCollidable(Collidable *collidable)
 
 void Engine::update()
 {
-	for(EntityList::iterator it = entities.begin(); it != entities.end();)
+	for(int i = 0; i < entities.size();)
 	{
-		if(!(*it)->update())
+		if(!entities[i]->update())
 		{
-			it = entities.erase(it);
+			entities.erase(entities.begin()+i);
 		}
 		else
 		{
-			++it;
+			++i;
 		}
 	}
 }
@@ -71,6 +71,17 @@ Engine *Engine::getInstance()
 		Engine::instance = new Engine();
 	}
 	return Engine::instance;
+}
+
+void Engine::shutdown()
+{
+	if(!Engine::instance)
+	{
+		Engine::instance->entities.clear();
+		Engine::instance->renderables.clear();
+		Engine::instance->collidables.clear();
+		delete Engine::instance;
+	}
 }
 
 Engine *Engine::instance = 0;

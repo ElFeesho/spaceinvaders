@@ -17,6 +17,8 @@ class Engine
 {
 public:
 	static Engine *getInstance();
+	static void shutdown();
+
 	void addEntity(Entity *entity);
 	void addRenderable(Renderable *renderable);
 	void addCollidable(Collidable *collidable);
@@ -29,6 +31,10 @@ private:
 	~Engine();
 
 	static Engine *instance;
+
+	EntityList pendingEntities;
+	RenderableList pendingRenderables;
+	CollidableList pendingCollidables;
 
 	EntityList entities;
 	RenderableList renderables;

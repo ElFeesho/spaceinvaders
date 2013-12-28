@@ -4,8 +4,7 @@
 class Collidable
 {
 public:
-	Collidable();
-	~Collidable();
+	virtual ~Collidable();
 
 	virtual void checkCollision(Collidable *collidable);
 	virtual void hasCollided(Collidable *with) = 0; 
