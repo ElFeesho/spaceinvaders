@@ -2,7 +2,7 @@
 
 #include <SDL/SDL.h>
 
-BadGuy::BadGuy() : isAlive(true)
+BadGuy::BadGuy()
 {
 	setRadius(16);
 }
@@ -16,12 +16,12 @@ bool BadGuy::render()
 {
 	SDL_Rect rect = { X(), Y(), getRadius()*2, getRadius()*2 };
 	SDL_FillRect(SDL_GetVideoSurface(), &rect, 0xffffff00);
-	return isAlive;
+	return isAlive();
 }
 
 bool BadGuy::update()
 {
-	return isAlive;
+	return isAlive();
 }
 
 int BadGuy::getId()
@@ -33,6 +33,24 @@ void BadGuy::hasCollided(Collidable *collidable)
 {
 	if(collidable->getId() == 1)
 	{
-		isAlive = false;
+		kill();
+	}
+}
+
+void BadGuy::renderPixels(const short *data, int count)
+{
+	SDL_Rect brush = { X(), Y(), 4, 4 };
+	for(int i = 0; i < count; i++)
+	{
+		brush.x = X();
+		for(int x = 0; x < 16; x++)
+		{
+			if(((data[i] >> (15-x)) & 0x1) == 1)
+			{
+				SDL_FillRect(SDL_GetVideoSurface(), &brush, 0xffffffff);
+			}
+			brush.x += brush.w;
+		}
+		brush.y += brush.h;
 	}
 }

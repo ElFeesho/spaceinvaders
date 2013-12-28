@@ -16,8 +16,9 @@ public:
 	bool update();
 
 	void hasCollided(Collidable *collidable);
-private:
-	bool isAlive;
+
+protected:
+	void renderPixels(const short *data, int count);
 };
 
 #endif
