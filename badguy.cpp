@@ -39,7 +39,7 @@ void BadGuy::hasCollided(Collidable *collidable)
 
 void BadGuy::renderPixels(const short *data, int count)
 {
-	SDL_Rect brush = { X(), Y(), 4, 4 };
+	SDL_Rect brush = { X(), Y(), 2, 2 };
 	for(int i = 0; i < count; i++)
 	{
 		brush.x = X();

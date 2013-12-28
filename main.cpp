@@ -5,9 +5,7 @@
 
 #include "engine.hpp"
 #include "ship.hpp"
-#include "bugguy.hpp"
-#include "skullguy.hpp"
-#include "octoguy.hpp"
+#include "enemyarray.hpp"
 
 int main(int argc, char **argv)
 {
@@ -24,29 +22,13 @@ int main(int argc, char **argv)
 	Engine *engine = Engine::getInstance();
 
 	Ship *ship = new Ship();
-	BugGuy *baddie = new BugGuy();
-	baddie->X(160);
-	baddie->Y(100);
-
-	SkullGuy *baddie2 = new SkullGuy();
-	baddie2->X(200);
-	baddie2->Y(100);
-
-	OctoGuy *baddie3 = new OctoGuy();
-	baddie3->X(260);
-	baddie3->Y(100);
+	EnemyArray *enemyArray = new EnemyArray();
 
 	engine->addEntity(ship);
 	engine->addRenderable(ship);
 
-	engine->addEntity(baddie);
-	engine->addRenderable(baddie);
-
-	engine->addEntity(baddie2);
-	engine->addRenderable(baddie2);
-
-	engine->addEntity(baddie3);
-	engine->addRenderable(baddie3);
+	engine->addEntity(enemyArray);
+	engine->addRenderable(enemyArray);
 
 	while (!done)
 	{
