@@ -4,7 +4,7 @@
 
 BadGuy::BadGuy()
 {
-	setRadius(16);
+	setRadius(32);
 }
 
 BadGuy::~BadGuy()

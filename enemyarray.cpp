@@ -4,6 +4,8 @@
 #include "bugguy.hpp"
 #include "octoguy.hpp"
 
+#include <SDL/SDL.h>
+
 BadGuyList* createEnemyArray(int x)
 {
 	BadGuyList *list = new BadGuyList();
@@ -39,6 +41,19 @@ BadGuyList* createEnemyArray(int x)
 	return list;
 }
 
+double getMaxX(vector<BadGuyList*> &list)
+{
+	vector<BadGuy*> *end = (*(list.end()-1));
+	BadGuy *baddie = (*end)[0];
+	return baddie->X();
+}
+
+double getMinX(vector<BadGuyList*> &list)
+{
+	vector<BadGuy*> *first = (*list.begin());
+	return (*first)[0]->X();
+}
+
 EnemyArray::EnemyArray()
 {
 	badGuyLists.push_back(createEnemyArray(0));
@@ -65,11 +80,45 @@ EnemyArray::~EnemyArray()
 bool EnemyArray::update()
 {
 	bool success = false;
+	int xmove = 0;
+	int ymove = 0;
+	if(SDL_GetTicks() > lastUpdate+1000)
+	{
+		lastUpdate = SDL_GetTicks();
+		if(movingRight)
+		{
+			if(getMaxX(badGuyLists) > SDL_GetVideoSurface()->w-30)
+			{
+				ymove = 30;
+				movingRight = false;
+			}
+			else
+			{
+				xmove = 30;
+			}
+		}
+		else
+		{
+			if(getMinX(badGuyLists) <= 0)
+			{
+				ymove = 30;
+				movingRight = true;
+			}
+			else
+			{
+				xmove = -30;
+			}
+		}
+	}
+
 	for(int i = 0; i < badGuyLists.size(); i++)
 	{
 		for(int k = 0; k < badGuyLists[i]->size(); k++)
 		{
-			success |= (*badGuyLists[i])[k]->update();
+			BadGuy *baddie = (*badGuyLists[i])[k];
+			baddie->X(baddie->X()+xmove);
+			baddie->Y(baddie->Y()+ymove);
+			success |= baddie->update();
 		}
 	}
 
@@ -91,7 +140,28 @@ bool EnemyArray::render()
 
 void EnemyArray::checkCollision(Collidable *target)
 {
+	for(int i = 0; i < badGuyLists.size(); i++)
+	{
+		for(int k = 0; k < badGuyLists[i]->size(); k++)
+		{
+			(*badGuyLists[i])[k]->checkCollision(target);
+		}
+	}
 
+	// Now that we've checked collision we need to purge all the
+	// dead bad guys
+
+	for(int i = 0; i < badGuyLists.size(); i++)
+	{
+		for(int k = 0; k < badGuyLists[i]->size(); k++)
+		{
+			if(!(*badGuyLists[i])[k]->isAlive())
+			{
+				printf("Removing dead baddie\n");
+				(*badGuyLists[i]).erase((*badGuyLists[i]).begin()+k);	
+			}
+		}
+	}	
 }
 
 void EnemyArray::hasCollided(Collidable *victim)

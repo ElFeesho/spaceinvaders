@@ -12,8 +12,8 @@ public:
 
 	int getId();
 
-	bool render();
-	bool update();
+	virtual bool render();
+	virtual bool update();
 
 	void hasCollided(Collidable *collidable);
 
