@@ -157,11 +157,19 @@ void EnemyArray::checkCollision(Collidable *target)
 		{
 			if(!(*badGuyLists[i])[k]->isAlive())
 			{
-				printf("Removing dead baddie\n");
 				(*badGuyLists[i]).erase((*badGuyLists[i]).begin()+k);	
 			}
+
+			// Check to see if this list is empty now
+
+			if((*badGuyLists[i]).empty())
+			{
+				badGuyLists.erase(badGuyLists.begin()+i);
+			}
 		}
-	}	
+	}
+
+
 }
 
 void EnemyArray::hasCollided(Collidable *victim)

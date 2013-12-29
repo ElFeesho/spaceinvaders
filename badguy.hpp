@@ -16,6 +16,7 @@ public:
 	virtual bool update();
 
 	void hasCollided(Collidable *collidable);
+	void checkCollision(Collidable *target);
 
 protected:
 	void renderPixels(const short *data, int count);
