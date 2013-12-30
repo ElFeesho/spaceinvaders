@@ -23,3 +23,8 @@ void Collidable::checkCollision(Collidable *target)
 		this->hasCollided(target);
 	}
 }
+
+void Collidable::hasCollided(Collidable *victim)
+{
+	
+}

@@ -7,7 +7,7 @@ public:
 	virtual ~Collidable();
 
 	virtual void checkCollision(Collidable *collidable);
-	virtual void hasCollided(Collidable *with) = 0; 
+	virtual void hasCollided(Collidable *with); 
 
 	virtual double getRadius() = 0;
 	virtual double getX() = 0;

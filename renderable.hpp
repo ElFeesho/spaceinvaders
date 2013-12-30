@@ -10,6 +10,7 @@ public:
 	virtual bool render() = 0;
 protected:
 	void renderPixels(const short *data, int count, double x, double y);
+	void renderPixels(const char *data, int count, double x, double y);
 private:
 
 };

@@ -5,6 +5,7 @@
 
 #include "engine.hpp"
 #include "ship.hpp"
+#include "score.hpp"
 #include "enemyarray.hpp"
 
 int main(int argc, char **argv)
@@ -22,6 +23,7 @@ int main(int argc, char **argv)
 	Engine *engine = Engine::getInstance();
 
 	Ship *ship = new Ship();
+	Score *score = new Score();
 	EnemyArray *enemyArray = new EnemyArray();
 
 	engine->addEntity(ship);
@@ -29,6 +31,9 @@ int main(int argc, char **argv)
 
 	engine->addEntity(enemyArray);
 	engine->addRenderable(enemyArray);
+
+	engine->addEntity(score);
+	engine->addRenderable(score);
 
 	while (!done)
 	{
