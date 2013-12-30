@@ -2,12 +2,14 @@
 #define __ENGINE_HPP__
 
 #include <vector>
+#include <string>
 
 #include "renderable.hpp"
 #include "collidable.hpp"
 #include "entity.hpp"
 
 using std::vector;
+using std::string;
 
 typedef vector<Renderable*> RenderableList;
 typedef vector<Collidable*> CollidableList;
@@ -24,6 +26,8 @@ public:
 
 	void update(); // Entities
 	void render(); // Renderables
+
+	Entity *findEntityByName(const string &name);
 private:
 	Engine();
 	~Engine();

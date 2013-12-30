@@ -52,21 +52,3 @@ void BadGuy::checkCollision(Collidable *collidable)
 		}
 	}
 }
-
-void BadGuy::renderPixels(const short *data, int count)
-{
-	SDL_Rect brush = { X(), Y(), 2, 2 };
-	for(int i = 0; i < count; i++)
-	{
-		brush.x = X();
-		for(int x = 0; x < 16; x++)
-		{
-			if(((data[i] >> (15-x)) & 0x1) == 1)
-			{
-				SDL_FillRect(SDL_GetVideoSurface(), &brush, 0xffffffff);
-			}
-			brush.x += brush.w;
-		}
-		brush.y += brush.h;
-	}
-}

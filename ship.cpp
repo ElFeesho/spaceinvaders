@@ -31,7 +31,7 @@ bool Ship::update()
 	{
 		X(X()+3);
 	}
-	if(keystate[SDLK_SPACE] && SDL_GetTicks() > lastShot+333)
+	if(keystate[SDLK_SPACE] && SDL_GetTicks() > lastShot+333 && !Engine::getInstance()->findEntityByName("bullet"))
 	{
 		Bullet *bullet = new Bullet();
 		bullet->X(X()+getRadius());

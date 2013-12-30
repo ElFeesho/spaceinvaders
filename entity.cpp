@@ -50,6 +50,16 @@ void Entity::setRadius(double r)
 	radius = r;
 }
 
+string Entity::getName()
+{
+	return name;
+}
+
+void Entity::setName(const string &name)
+{
+	this->name = name;
+}
+
 bool Entity::isAlive()
 {
 	return alive;

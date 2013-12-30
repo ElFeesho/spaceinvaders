@@ -24,6 +24,6 @@ OctoGuy::~OctoGuy()
 
 bool OctoGuy::render()
 {
-	renderPixels(SPRITE_ONE, 8);
+	renderPixels(SPRITE_ONE, 8, X()+4, Y());
 	return isAlive();
 }

@@ -5,6 +5,7 @@
 Bullet::Bullet()
 {
 	setRadius(4);
+	setName("bullet");
 }
 
 Bullet::~Bullet()

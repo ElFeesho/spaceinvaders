@@ -23,6 +23,6 @@ BugGuy::~BugGuy()
 
 bool BugGuy::render()
 {
-	renderPixels(SPRITE_ONE, 8);
+	renderPixels(SPRITE_ONE, 8, X(), Y());
 	return isAlive();
 }

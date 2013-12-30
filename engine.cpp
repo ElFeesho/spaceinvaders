@@ -63,6 +63,19 @@ void Engine::render()
 	}
 }
 
+Entity *Engine::findEntityByName(const string &name)
+{
+	for(int i = 0; i<entities.size(); i++)
+	{
+		if(entities[i]->getName() == name)
+		{
+			return entities[i];
+		}
+	}
+
+	return 0;
+}
+
 Engine *Engine::getInstance()
 {
 	if(!Engine::instance)

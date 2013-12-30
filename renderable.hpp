@@ -8,6 +8,8 @@ public:
 	virtual ~Renderable() = 0;
 
 	virtual bool render() = 0;
+protected:
+	void renderPixels(const short *data, int count, double x, double y);
 private:
 
 };
