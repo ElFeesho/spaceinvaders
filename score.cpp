@@ -1,11 +1,11 @@
 #include "score.hpp"
 
-static const char FNT_0[] = {  0xff,   	 // xxxx xxxx  
-							   0xc3,	 // xx     xx
-							   0xc3,	 // xx     xx
-							   0xc3,	 // xx     xx
-							   0xc3,	 // xx     xx
-							   0xff		 // xxxx xxxx
+static const char FNT_0[] = {  0x7e,   	 //  xxx xxx  
+							   0xc7,	 // xx    xxx
+							   0xcb,	 // xx   x xx
+							   0xd3,	 // xx x   xx
+							   0xe3,	 // xxx    xx
+							   0x7e		 //  xxx xxx
 							   	  }; 
 
 static const char FNT_1[] = {  0x60,   	 //  xx  
@@ -24,13 +24,21 @@ static const char FNT_2[] = {  0x7e,   	 //  xxx xxx
 							   0xff		 // xxxx xxxx
 							   	  };   
 
-static const char FNT_3[] = {  0x7e,   	 // xxxx xxxx 
-							   0xe7,	 //       xxx
-							   0x07,	 //       xx
-							   0x0e,	 //      xxx
-							   0x38,	 //   xx x  
-							   0xff		 // xxxx xxxx
-							   	  };   							   	  
+static const char FNT_3[] = {  0xff,   	 // xxxx xxxx 
+							   0x03,	 //        xx
+							   0x0c,	 //      xx 
+							   0x03,	 //        xx
+							   0xc3,	 // xx     xx 
+							   0x7c		 //  xxx xx
+							   	  }; 
+
+static const char FNT_4[] = {  0xff,   	 // xxxx xxxx 
+							   0x03,	 //        xx
+							   0x0c,	 //      xx 
+							   0x03,	 //        xx
+							   0xc3,	 // xx     xx 
+							   0x7c		 //  xxx xx
+							   	  }; 							   	    							   	  
 
 Score::Score()
 {
@@ -49,7 +57,10 @@ bool Score::update()
 
 bool Score::render()
 {
-	renderPixels(FNT_2, 6, 0, 0);
+	renderPixels(FNT_0, 6, 0, 0);
+	renderPixels(FNT_1, 6, 60, 0);
+	renderPixels(FNT_2, 6, 120, 0);
+	renderPixels(FNT_3, 6, 180, 0);
 	return true;
 }
 
