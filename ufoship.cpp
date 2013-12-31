@@ -41,7 +41,7 @@ bool UfoShip::update()
 
 bool UfoShip::render()
 {
-	renderPixels(SPRITE, 8, X(), Y());
+	renderPixels(SPRITE, 8, X(), Y(), 0xffff0000);
 	return isAlive();
 }
 

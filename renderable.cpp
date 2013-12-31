@@ -12,7 +12,7 @@ Renderable::~Renderable()
 	
 }
 
-void Renderable::renderPixels(const short *data, int count, double x, double y)
+void Renderable::renderPixels(const short *data, int count, double x, double y, int colour)
 {
 	SDL_Rect brush = { x, y, 2, 2 };
 	for(int i = 0; i < count; i++)
@@ -22,7 +22,7 @@ void Renderable::renderPixels(const short *data, int count, double x, double y)
 		{
 			if(((data[i] >> (15-x)) & 0x1) == 1)
 			{
-				SDL_FillRect(SDL_GetVideoSurface(), &brush, 0xffffffff);
+				SDL_FillRect(SDL_GetVideoSurface(), &brush, colour);
 			}
 			brush.x += brush.w;
 		}
@@ -30,7 +30,7 @@ void Renderable::renderPixels(const short *data, int count, double x, double y)
 	}
 }
 
-void Renderable::renderPixels(const char *data, int count, double x, double y)
+void Renderable::renderPixels(const char *data, int count, double x, double y, int colour)
 {
 	SDL_Rect brush = { x, y, 2, 2 };
 	for(int i = 0; i < count; i++)
@@ -40,7 +40,7 @@ void Renderable::renderPixels(const char *data, int count, double x, double y)
 		{
 			if(((data[i] >> (7-x)) & 0x1) == 1)
 			{
-				SDL_FillRect(SDL_GetVideoSurface(), &brush, 0xffffffff);
+				SDL_FillRect(SDL_GetVideoSurface(), &brush, colour);
 			}
 			brush.x += brush.w;
 		}
