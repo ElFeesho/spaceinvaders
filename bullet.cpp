@@ -15,7 +15,7 @@ Bullet::~Bullet()
 
 bool Bullet::update()
 {
-	Y(Y()-3);
+	Y(Y()-6);
 	
 	if((Y()+getRadius()<0))
 	{

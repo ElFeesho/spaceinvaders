@@ -20,8 +20,8 @@ public:
 	void addEntity(Entity *entity);
 	void addRenderable(Renderable *renderable);
 
-	void update();
-	void render();
+	virtual void update();
+	virtual void render();
 	
 	Entity *findEntityByName(const string &name);
 private:

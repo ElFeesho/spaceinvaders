@@ -4,9 +4,7 @@
 #include <math.h>
 
 #include "engine.hpp"
-#include "ship.hpp"
-#include "score.hpp"
-#include "enemyarray.hpp"
+#include "startgame.hpp"
 
 int main(int argc, char **argv)
 {
@@ -22,22 +20,7 @@ int main(int argc, char **argv)
 
 	Engine *engine = Engine::getInstance();
 
-	Scene *gameScene = new Scene();
-
-	Ship *ship = new Ship();
-	Score *score = new Score();
-	EnemyArray *enemyArray = new EnemyArray();
-
-	gameScene->addEntity(ship);
-	gameScene->addRenderable(ship);
-
-	gameScene->addEntity(enemyArray);
-	gameScene->addRenderable(enemyArray);
-
-	gameScene->addEntity(score);
-	gameScene->addRenderable(score);
-
-	engine->pushScene(gameScene);
+	engine->pushScene(new StartGame());
 
 	while (!done)
 	{
