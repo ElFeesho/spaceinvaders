@@ -11,31 +11,31 @@ BadGuyList* createEnemyArray(int x)
 	BadGuyList *list = new BadGuyList();
 	OctoGuy *octoguy = new OctoGuy();
 	octoguy->X(x);
-	octoguy->Y(0);
+	octoguy->Y(30);
 
 	list->push_back(octoguy);
 
 	BugGuy *bugguy = new BugGuy();
 
 	bugguy->X(x);
-	bugguy->Y(30);
+	bugguy->Y(60);
 
 	list->push_back(bugguy);
 
 	bugguy = new BugGuy();
 	bugguy->X(x);
-	bugguy->Y(60);
+	bugguy->Y(90);
 	list->push_back(bugguy);
 
 	SkullGuy *skullguy = new SkullGuy();
 	skullguy->X(x);
-	skullguy->Y(90);
+	skullguy->Y(120);
 
 	list->push_back(skullguy);
 
 	skullguy = new SkullGuy();
 	skullguy->X(x);
-	skullguy->Y(120);
+	skullguy->Y(150);
 	list->push_back(skullguy);
 
 	return list;
@@ -56,7 +56,6 @@ double getMinX(vector<BadGuyList*> &list)
 
 EnemyArray::EnemyArray()
 {
-	badGuyLists.push_back(createEnemyArray(0));
 	badGuyLists.push_back(createEnemyArray(40));
 	badGuyLists.push_back(createEnemyArray(80));
 	badGuyLists.push_back(createEnemyArray(120));
@@ -68,6 +67,7 @@ EnemyArray::EnemyArray()
 	badGuyLists.push_back(createEnemyArray(360));
 	badGuyLists.push_back(createEnemyArray(400));
 	badGuyLists.push_back(createEnemyArray(440));
+	badGuyLists.push_back(createEnemyArray(480));
 	movingRight = true;
 	lastUpdate = 0;
 }
@@ -82,12 +82,13 @@ bool EnemyArray::update()
 	bool success = false;
 	int xmove = 0;
 	int ymove = 0;
+	
 	if(SDL_GetTicks() > lastUpdate+1000)
 	{
 		lastUpdate = SDL_GetTicks();
 		if(movingRight)
 		{
-			if(getMaxX(badGuyLists) > SDL_GetVideoSurface()->w-30)
+			if(getMaxX(badGuyLists)+30 > SDL_GetVideoSurface()->w-30)
 			{
 				ymove = 30;
 				movingRight = false;
@@ -99,7 +100,7 @@ bool EnemyArray::update()
 		}
 		else
 		{
-			if(getMinX(badGuyLists) <= 0)
+			if(getMinX(badGuyLists)-30 <= 0)
 			{
 				ymove = 30;
 				movingRight = true;

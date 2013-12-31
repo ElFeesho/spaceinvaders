@@ -5,6 +5,17 @@
 #include "engine.hpp"
 #include "bullet.hpp"
 
+static const short SPRITE_SHIP[] = {
+										0x0100,  // 0000 000x 0000 0000
+										0x0380,  // 0000 00xx x000 0000
+										0x0380,  // 0000 00xx x000 0000
+										0x7ffc,  // 0xxx xxxx xxxx xx00
+										0xfffe,  // xxxx xxxx xxxx xxx0
+										0xfffe,  // xxxx xxxx xxxx xxx0
+										0xfffe,  // xxxx xxxx xxxx xxx0
+										0xfffe   // xxxx xxxx xxxx xxx0
+};						
+
 Ship::Ship() : lastShot(0)
 {
 	setRadius(16);
@@ -62,13 +73,7 @@ int Ship::getId()
 
 bool Ship::render()
 {
-	SDL_Surface *screen = SDL_GetVideoSurface();
-	SDL_Rect body = { X(), Y()+getRadius(), getRadius()*2, getRadius()};
-	SDL_Rect upperBody = { X()+5, Y()+getRadius()/2, getRadius()*2-10, getRadius()/2 };
-	SDL_Rect funnel = { X()+getRadius()-2, Y(), 4, getRadius() };
-	SDL_FillRect(screen, &body, 0xffffffff);
-	SDL_FillRect(screen, &upperBody, 0xffffffff);
-	SDL_FillRect(screen, &funnel, 0xffffffff);
+	renderPixels(SPRITE_SHIP, 8, X(), Y());
 
 	return isAlive();
 }

@@ -1,4 +1,6 @@
 #include "badguy.hpp"
+#include "score.hpp"
+#include "engine.hpp"
 
 #include <SDL/SDL.h>
 
@@ -35,6 +37,8 @@ void BadGuy::hasCollided(Collidable *collidable)
 	{
 		kill();
 		((Entity*)collidable)->kill();
+		Score *score = (Score*)Engine::getInstance()->findEntityByName("score");
+		score->incScore(10);
 	}
 }
 

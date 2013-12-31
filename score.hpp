@@ -15,6 +15,8 @@ public:
 
 	int getId();
 
+	void incScore(int points);
+
 private:
 	int score;
 };
