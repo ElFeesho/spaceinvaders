@@ -22,18 +22,22 @@ int main(int argc, char **argv)
 
 	Engine *engine = Engine::getInstance();
 
+	Scene *gameScene = new Scene();
+
 	Ship *ship = new Ship();
 	Score *score = new Score();
 	EnemyArray *enemyArray = new EnemyArray();
 
-	engine->addEntity(ship);
-	engine->addRenderable(ship);
+	gameScene->addEntity(ship);
+	gameScene->addRenderable(ship);
 
-	engine->addEntity(enemyArray);
-	engine->addRenderable(enemyArray);
+	gameScene->addEntity(enemyArray);
+	gameScene->addRenderable(enemyArray);
 
-	engine->addEntity(score);
-	engine->addRenderable(score);
+	gameScene->addEntity(score);
+	gameScene->addRenderable(score);
+
+	engine->pushScene(gameScene);
 
 	while (!done)
 	{

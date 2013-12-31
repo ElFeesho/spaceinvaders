@@ -37,7 +37,7 @@ void BadGuy::hasCollided(Collidable *collidable)
 	{
 		kill();
 		((Entity*)collidable)->kill();
-		Score *score = (Score*)Engine::getInstance()->findEntityByName("score");
+		Score *score = (Score*)Engine::getInstance()->getActiveScene()->findEntityByName("score");
 		score->incScore(10);
 	}
 }

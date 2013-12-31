@@ -4,16 +4,7 @@
 #include <vector>
 #include <string>
 
-#include "renderable.hpp"
-#include "collidable.hpp"
-#include "entity.hpp"
-
-using std::vector;
-using std::string;
-
-typedef vector<Renderable*> RenderableList;
-typedef vector<Collidable*> CollidableList;
-typedef vector<Entity*> EntityList;
+#include "scene.hpp"
 
 class Engine
 {
@@ -21,21 +12,21 @@ public:
 	static Engine *getInstance();
 	static void shutdown();
 
-	void addEntity(Entity *entity);
-	void addRenderable(Renderable *renderable);
-
 	void update(); // Entities
 	void render(); // Renderables
 
-	Entity *findEntityByName(const string &name);
+	void pushScene(Scene *scene);
+	void popScene();
+
+	Scene *getActiveScene();
 private:
 	Engine();
 	~Engine();
 
 	static Engine *instance;
 
-	EntityList entities;
-	RenderableList renderables;
+	vector<Scene*> scenes;
+
 };
 
 #endif

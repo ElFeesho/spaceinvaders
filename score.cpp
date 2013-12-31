@@ -93,7 +93,7 @@ static const char *FNT[] = {
 	FNT_9
 };
 
-Score::Score()
+Score::Score() : score(0)
 {
 	setName("score");
 }

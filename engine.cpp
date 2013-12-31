@@ -10,71 +10,39 @@ Engine::~Engine()
 
 }
 
-void Engine::addEntity(Entity *entity)
+
+void Engine::pushScene(Scene *scene)
 {
-	entities.push_back(entity);
+	scenes.push_back(scene);
 }
 
-void Engine::addRenderable(Renderable *renderable)
+void Engine::popScene()
 {
-	renderables.push_back(renderable);
+	scenes.pop_back();
 }
+
 
 void Engine::update()
 {
-	for(int i = 0; i < entities.size();)
+	for(int i = 0; i<scenes.size(); i++)
 	{
-		if(!entities[i]->update())
-		{
-			entities.erase(entities.begin()+i);
-		}
-		else
-		{
-			++i;
-		}
-	}
-
-	for(EntityList::iterator it = entities.begin(); it != entities.end(); ++it)
-	{
-		for(EntityList::iterator target = entities.begin(); target != entities.end(); ++target)
-		{
-			if(it == target)
-			{
-				continue;
-			}	
-
-			(*it)->checkCollision((*target));
-		}		
+		scenes[i]->update();
 	}
 }
 
 void Engine::render()
 {
-	for(int i = 0; i < renderables.size();)
+	for(int i = 0; i<scenes.size(); i++)
 	{
-		if(!renderables[i]->render())
-		{
-			renderables.erase(renderables.begin()+i);
-		}
-		else
-		{
-			++i;
-		}
-	}
+		scenes[i]->render();
+	}	
 }
 
-Entity *Engine::findEntityByName(const string &name)
+Scene *Engine::getActiveScene()
 {
-	for(int i = 0; i<entities.size(); i++)
-	{
-		if(entities[i]->getName() == name)
-		{
-			return entities[i];
-		}
-	}
-
-	return 0;
+	return (*(scenes.end()-1));
 }
+
 
 Engine *Engine::getInstance()
 {
@@ -89,8 +57,7 @@ void Engine::shutdown()
 {
 	if(!Engine::instance)
 	{
-		Engine::instance->entities.clear();
-		Engine::instance->renderables.clear();
+		Engine::instance->scenes.clear();
 		delete Engine::instance;
 	}
 }
