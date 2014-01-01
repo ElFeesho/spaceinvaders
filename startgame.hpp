@@ -8,6 +8,8 @@
 #include "bugguy.hpp"
 #include "ufoship.hpp"
 
+#include "number.hpp"
+
 class StartGame : public Scene
 {
 public:
@@ -22,6 +24,7 @@ private:
 	BugGuy *bugguy;
 	OctoGuy *octoguy;
 	UfoShip *ufoship;
+	Number *scoreIndicator;
 };
 
 #endif

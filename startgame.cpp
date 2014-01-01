@@ -23,6 +23,8 @@ StartGame::StartGame()
 	bugguy->Y(screen->h/3+30);
 	octoguy->Y(screen->h/3+60);
 	ufoship->Y(screen->h/3+90);
+
+	scoreIndicator = new Number();
 }
 
 StartGame::~StartGame()
@@ -49,4 +51,20 @@ void StartGame::render()
 	bugguy->render();
 	ufoship->render();
 	octoguy->render();
+
+	scoreIndicator->setPosition(skullguy->X()+50, skullguy->Y());
+	scoreIndicator->setNumber(10);
+	scoreIndicator->render();
+
+	scoreIndicator->setPosition(bugguy->X()+50, bugguy->Y());
+	scoreIndicator->setNumber(20);
+	scoreIndicator->render();
+
+	scoreIndicator->setPosition(octoguy->X()+50, octoguy->Y());
+	scoreIndicator->setNumber(30);
+	scoreIndicator->render();
+
+	scoreIndicator->setPosition(ufoship->X()+50, ufoship->Y());
+	scoreIndicator->setNumber(1000);
+	scoreIndicator->render();
 }

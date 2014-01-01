@@ -3,6 +3,7 @@
 
 #include "entity.hpp"
 #include "renderable.hpp"
+#include "number.hpp"
 
 class Score : public Entity, public Renderable
 {
@@ -19,6 +20,7 @@ public:
 
 private:
 	int score;
+	Number number;
 };
 
 #endif
