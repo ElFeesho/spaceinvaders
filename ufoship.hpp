@@ -16,6 +16,8 @@ public:
 	void checkCollision(Collidable *target);
 	void hasCollided(Collidable *target);
 	int getId();
+private:
+	int colour;
 };
 
 #endif

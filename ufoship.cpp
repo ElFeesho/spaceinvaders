@@ -20,6 +20,16 @@ UfoShip::UfoShip()
 	Y(32);
 	X(-100);
 	setRadius(32);
+	int endiannessTest = 1;
+	char *endianness = (char*)&endiannessTest;
+	if(endianness[0] == 1)
+	{
+		colour = 0x0000ffff;
+	}
+	else
+	{
+		colour = 0xffff0000;
+	}
 }
 
 UfoShip::~UfoShip()
@@ -41,7 +51,7 @@ bool UfoShip::update()
 
 bool UfoShip::render()
 {
-	renderPixels(SPRITE, 8, X(), Y(), 0xffff0000);
+	renderPixels(SPRITE, 7, X(), Y(), colour);
 	return isAlive();
 }
 
