@@ -1,11 +1,10 @@
-OBJS=main.o engine.o entity.o \
-collidable.o ship.o renderable.o \
+OBJS=main.o ship.o \
 bullet.o badguy.o bugguy.o skullguy.o \
-octoguy.o enemyarray.o score.o scene.o \
+octoguy.o enemyarray.o score.o \
 gamescene.o startgame.o ufoship.o number.o
 
-LIBS=`pkg-config --libs sdl SDL_gfx`
-CFLAGS=`pkg-config --cflags sdl SDL_gfx` -g -O0
+LIBS=`pkg-config --libs sdl SDL_gfx` -L../sge -lsge
+CFLAGS=`pkg-config --cflags sdl SDL_gfx` -g -O0 -I../sge
 PROG=spaceinvaders
 
 all:$(OBJS)
