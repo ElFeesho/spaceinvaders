@@ -49,7 +49,6 @@ bool Ship::update()
 		bullet->Y(Y());
 
 		Engine::getInstance()->getActiveScene()->addEntity(bullet);
-		Engine::getInstance()->getActiveScene()->addRenderable(bullet);
 
 		lastShot = SDL_GetTicks();
 	}

@@ -1,5 +1,7 @@
 #include "bullet.hpp"
 
+#include "engine.hpp"
+
 #include <SDL/SDL.h>
 
 Bullet::Bullet()
@@ -13,10 +15,20 @@ Bullet::~Bullet()
 
 }
 
+void Bullet::entityAdded()
+{
+	Engine::getInstance()->getActiveScene()->addRenderable(this);
+}
+
+void Bullet::entityRemoved()
+{
+	Engine::getInstance()->getActiveScene()->removeRenderable(this);
+}
+
 bool Bullet::update()
 {
 	Y(Y()-6);
-	
+
 	if((Y()+getRadius()<0))
 	{
 		kill();

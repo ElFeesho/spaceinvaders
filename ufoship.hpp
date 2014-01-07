@@ -16,6 +16,9 @@ public:
 	void checkCollision(Collidable *target);
 	void hasCollided(Collidable *target);
 	int getId();
+
+	void entityAdded();
+	void entityRemoved();
 private:
 	int colour;
 };

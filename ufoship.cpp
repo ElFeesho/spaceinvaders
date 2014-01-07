@@ -36,6 +36,16 @@ UfoShip::~UfoShip()
 {
 }
 
+void UfoShip::entityAdded()
+{
+	Engine::getInstance()->getActiveScene()->addRenderable(this);
+}
+
+void UfoShip::entityRemoved()
+{
+	Engine::getInstance()->getActiveScene()->removeRenderable(this);
+}
+
 bool UfoShip::update()
 {
 	if(X()<SDL_GetVideoSurface()->w - 32)

@@ -17,6 +17,9 @@ public:
 	bool update();
 
 	void hasCollided(Collidable *collidable);
+
+	void entityAdded();
+	void entityRemoved();
 };
 
 #endif

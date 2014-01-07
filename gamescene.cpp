@@ -22,7 +22,6 @@ GameScene::GameScene()
 
 	UfoShip *ufoship = new UfoShip();
 	addEntity(ufoship);
-	addRenderable(ufoship);
 }
 
 GameScene::~GameScene()
